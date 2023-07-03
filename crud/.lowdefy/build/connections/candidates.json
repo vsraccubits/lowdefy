@@ -1,0 +1,13 @@
+{
+  "id": "connection:candidates",
+  "type": "MongoDBCollection",
+  "properties": {
+    "databaseUri": {
+      "_secret": "MONGODB_URI"
+    },
+    "databaseName": "candidates-crud",
+    "collection": "candidates",
+    "write": true
+  },
+  "connectionId": "candidates"
+}

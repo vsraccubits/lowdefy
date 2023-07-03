@@ -1,0 +1,36 @@
+{
+  "id": "request:candidates_home:candidates_home:update_candidate",
+  "type": "MongoDBUpdateOne",
+  "connectionId": "candidates",
+  "properties": {
+    "filter": {
+      "_id": {
+        "_state": "selected_id"
+      }
+    },
+    "update": {
+      "$set": {
+        "name": {
+          "_state": "name"
+        },
+        "dateOfBirth": {
+          "_state": "dateOfBirth"
+        },
+        "gender": {
+          "_state": "gender"
+        },
+        "position": {
+          "_state": "position"
+        },
+        "updatedAt": {
+          "_date": "now"
+        }
+      }
+    }
+  },
+  "auth": {
+    "public": true
+  },
+  "requestId": "update_candidate",
+  "contextId": "candidates_home"
+}

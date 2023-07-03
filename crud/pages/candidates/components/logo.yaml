@@ -1,0 +1,7 @@
+# common logo component
+id: logo_img
+type: Img
+properties:
+  src: public/git.png
+  alt: git-logo
+  height: 50

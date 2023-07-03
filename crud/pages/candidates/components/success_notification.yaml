@@ -1,0 +1,5 @@
+# common notification component
+id: notification_success
+type: Notification
+properties:
+  message: Action completed successfully

@@ -1,0 +1,104 @@
+# add candidate component
+id: add_candidate_card
+type: Card
+areas:
+  title:
+    blocks:
+      - id: add_candidate_title
+        type: Title
+        properties:
+          content: Add Candidate
+          level: 3
+  content:
+    gutter: 16
+    blocks:
+      - id: candidate_name
+        type: TextInput
+        required: Please enter your name
+        layout:
+          span: 12
+        properties:
+          title: Name
+          placeholder: Enter your name
+      - id: candidate_dob
+        type: DateSelector
+        required: Please enter your Date of Birth
+        layout:
+          span: 12
+        properties:
+          title: Date Of Birth
+          placeholder: Enter your DOB
+      - id: candidate_gender
+        type: RadioSelector
+        required: Please enter your gender
+        layout:
+          span: 12
+        properties:
+          title: Gender
+          options:
+            - label: Male
+              value: male
+              disabled: false
+              style: null
+            - label: Female
+              value: female
+              disabled: false
+              style: null
+      - id: candidate_position
+        type: Selector
+        required: Please enter your position
+        layout:
+          span: 12
+        properties:
+          title: Applied Position
+          options:
+            - label: Developer
+              value: Developer
+              disabled: false
+              filterString: null
+              style: null
+            - label: Tester
+              value: Tester
+              disabled: false
+              filterString: null
+              style: null
+          showSearch: false
+  extra:
+    blocks:
+      - id: submit_button
+        type: Button
+        properties:
+          block: true
+          icon: SaveOutlined
+          title: Submit
+        events:
+          onClick:
+            try:
+              - id: validate
+                type: Validate
+              - id: insert_candidates
+                type: Request
+                params:
+                  - insert_candidates
+              - id: fetch_candidates
+                type: Request
+                params:
+                  - fetch_candidates
+              - id: set_candidates
+                type: SetState
+                params:
+                  candidates_list:
+                    _request: fetch_candidates
+              - id: open_notification
+                type: CallMethod
+                params:
+                  blockId: notification_success
+                  method: open
+            catch:
+              - id: open_notification
+                type: CallMethod
+                params:
+                  blockId: notification_error
+                  method: open
+      - _ref: pages/candidates/components/success_notification.yaml
+      - _ref: pages/candidates/components/error_notification.yaml

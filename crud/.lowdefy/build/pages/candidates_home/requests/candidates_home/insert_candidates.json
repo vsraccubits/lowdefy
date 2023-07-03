@@ -1,0 +1,32 @@
+{
+  "id": "request:candidates_home:candidates_home:insert_candidates",
+  "type": "MongoDBInsertOne",
+  "connectionId": "candidates",
+  "properties": {
+    "doc": {
+      "name": {
+        "_state": "candidate_name"
+      },
+      "dateOfBirth": {
+        "_state": "candidate_dob"
+      },
+      "gender": {
+        "_state": "candidate_gender"
+      },
+      "position": {
+        "_state": "candidate_position"
+      },
+      "createdAt": {
+        "_date": "now"
+      },
+      "updatedAt": {
+        "_date": "now"
+      }
+    }
+  },
+  "auth": {
+    "public": true
+  },
+  "requestId": "insert_candidates",
+  "contextId": "candidates_home"
+}

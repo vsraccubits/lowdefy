@@ -1,0 +1,58 @@
+# list candidates component
+id: candidates_list
+type: List
+blocks:
+  - id: candidates_list_card
+    type: Card
+    style:
+      marginTop: 16
+    areas:
+      title:
+        blocks:
+          - id: candidates_list_title
+            type: Title
+            properties:
+              content:
+                _state: candidates_list.$.name
+              level: 4
+      content:
+        blocks:
+        - id: candidates_list_description
+          type: Descriptions
+          properties:
+            items:
+              - label: Date Of Birth
+                value: 
+                  _nunjucks: 
+                    template: '{{ my_date | date("YYYY-MM-DD") }}'
+                    on:
+                      my_date:
+                        _state: candidates_list.$.dateOfBirth
+              - label: Gender
+                value: 
+                  _state: candidates_list.$.gender
+              - label: Applied Position
+                value: 
+                  _state: candidates_list.$.position
+            layout: vertical
+            size: small
+      extra:
+        blocks:
+          - id: candidates_list
+            type: Button
+            events:
+              onClick:
+                - id: set_selected
+                  type: SetState
+                  params:
+                    selected_id: 
+                      _state: candidates_list.$._id
+                - id: toggleOpen
+                  type: CallMethod
+                  params:
+                    blockId: candidate_modal
+                    method: toggleOpen
+            properties:
+              block: true
+              title: View More
+          - _ref: pages/candidates/components/retrieve_modal.yaml

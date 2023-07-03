@@ -1,0 +1,182 @@
+# item retrieve model component
+id: candidate_modal
+type: Modal
+events:
+  onOpen:
+    - id: fetch_selected
+      type: Request
+      params:
+        - fetch_selected
+    - id: set_selected
+      type: SetState
+      params:
+        _request: fetch_selected.0
+  onClose:
+    - id: fetch_candidates
+      type: Request
+      params:
+        - fetch_candidates
+    - id: set_candidates
+      type: SetState
+      params:
+        candidates_list:
+          _request: fetch_candidates
+areas:
+  content:
+    blocks:
+      - id: candidate_modal_card
+        type: Card
+        areas:
+          title:
+            blocks:
+              - id: candidate_modal_title
+                type: Title
+                properties:
+                  content: Candidate Information
+                  level: 3
+          content:
+            gutter: 16
+            blocks:
+              - id: name
+                type: TextInput
+                layout:
+                  span: 12
+                properties:
+                  title: Name
+                  placeholder: Enter your name
+              - id: dateOfBirth
+                type: DateSelector
+                layout:
+                  span: 12
+                properties:
+                  title: Date Of Birth
+                  placeholder: Enter your DOB
+              - id: gender
+                type: RadioSelector
+                layout:
+                  span: 12
+                properties:
+                  title: Gender
+                  options:
+                    - label: Male
+                      value: male
+                      disabled: false
+                      style: null
+                    - label: Female
+                      value: female
+                      disabled: false
+                      style: null
+              - id: position
+                type: Selector
+                layout:
+                  span: 12
+                properties:
+                  title: Applied Position
+                  options:
+                    - label: Developer
+                      value: Developer
+                      disabled: false
+                      filterString: null
+                      style: null
+                    - label: Tester
+                      value: Tester
+                      disabled: false
+                      filterString: null
+                      style: null
+                  showSearch: false
+  footer:
+    gutter: 16
+    blocks:
+      - id: candidate_delete_button
+        type: Button
+        events:
+          onClick:
+            - id: delete_confirm
+              type: CallMethod
+              params:
+                blockId: delete_confirm_modal
+                method: open
+        properties:
+          title: Delete
+          type: danger
+        style:
+          display: inline-block
+      - id: candidate_update_button
+        type: Button
+        events:
+          onClick:
+            try:
+              - id: update_candidate
+                type: Request
+                params:
+                  - update_candidate
+              - id: fetch_selected
+                type: Request
+                params:
+                  - fetch_selected
+              - id: set_selected
+                type: SetState
+                params:
+                  _request: fetch_selected.0
+              - id: open_notification
+                type: CallMethod
+                params:
+                  blockId: notification_success
+                  method: open
+            catch:
+              - id: open_notification
+                type: CallMethod
+                params:
+                  blockId: notification_error
+                  method: open
+        properties:
+          title: Update
+          type: primary
+        style:
+          display: inline-block
+      - id: delete_confirm_modal
+        type: ConfirmModal
+        events:
+          onOk:
+            try:
+              - id: link_to_candidates_home
+                type: Link
+                params:
+                  pageId: candidates_home
+              - id: delete_candidate
+                type: Request
+                params:
+                  - delete_candidate
+              - id: fetch_selected
+                type: Request
+                params:
+                  - fetch_selected
+              - id: open_notification
+                type: CallMethod
+                params:
+                  blockId: notification_success
+                  method: open
+            catch:
+              - id: open_notification
+                type: CallMethod
+                params:
+                  blockId: notification_error
+                  method: open
+        areas:
+          content:
+            blocks:
+              - id: delete_confirm_modal_title
+                type: Title
+                properties:
+                  content: Delete Candidate
+                  level: 3
+              - id: delete_confirm_modal_content
+                type: Paragraph
+                properties:
+                  content: Are you sure you want to delete this candidate?
+        properties:
+          okText: Delete
+          okButton:
+            type: danger
+    style:
+      display: inline-block

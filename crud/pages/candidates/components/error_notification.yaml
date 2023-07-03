@@ -1,0 +1,6 @@
+# common notification component
+id: notification_error
+type: Notification
+properties:
+  message: Something went wrong
+  status: error

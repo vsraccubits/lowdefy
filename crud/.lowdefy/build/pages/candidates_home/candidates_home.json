@@ -1,0 +1,1185 @@
+{
+  "id": "page:candidates_home",
+  "type": "PageHCF",
+  "properties": {
+    "title": "Candidates",
+    "content": {
+      "style": {
+        "marginTop": 30,
+        "marginBottom": 30
+      }
+    },
+    "footer": {
+      "style": {
+        "textAlign": "center",
+        "backgroundColor": "#d9d9d9",
+        "width": "100%"
+      }
+    }
+  },
+  "events": {
+    "onMount": {
+      "try": [
+        {
+          "id": "fetch_candidates",
+          "type": "Request",
+          "params": [
+            "fetch_candidates"
+          ]
+        },
+        {
+          "id": "set_candidates",
+          "type": "SetState",
+          "params": {
+            "candidates_list": {
+              "_request": "fetch_candidates"
+            }
+          }
+        }
+      ],
+      "catch": []
+    }
+  },
+  "areas": {
+    "header": {
+      "style": {
+        "textAlign": "center"
+      },
+      "blocks": [
+        {
+          "id": "block:candidates_home:logo_img",
+          "type": "Img",
+          "properties": {
+            "src": "public/git.png",
+            "alt": "git-logo",
+            "height": 50
+          },
+          "blockId": "logo_img",
+          "meta": {
+            "category": "display",
+            "loading": false,
+            "moduleFederation": {
+              "module": "Img",
+              "scope": "_at_lowdefy_slash_blocks_dash_basic",
+              "version": "3.23.3",
+              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-basic/remoteEntry.js"
+            }
+          }
+        }
+      ]
+    },
+    "content": {
+      "justify": "center",
+      "blocks": [
+        {
+          "id": "block:candidates_home:candidates_block",
+          "type": "Box",
+          "layout": {
+            "span": 12
+          },
+          "blockId": "candidates_block",
+          "meta": {
+            "category": "container",
+            "loading": false,
+            "moduleFederation": {
+              "module": "Box",
+              "scope": "_at_lowdefy_slash_blocks_dash_basic",
+              "version": "3.23.3",
+              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-basic/remoteEntry.js"
+            }
+          },
+          "areas": {
+            "content": {
+              "blocks": [
+                {
+                  "id": "block:candidates_home:add_candidate_card",
+                  "type": "Card",
+                  "areas": {
+                    "title": {
+                      "blocks": [
+                        {
+                          "id": "block:candidates_home:add_candidate_title",
+                          "type": "Title",
+                          "properties": {
+                            "content": "Add Candidate",
+                            "level": 3
+                          },
+                          "blockId": "add_candidate_title",
+                          "meta": {
+                            "category": "display",
+                            "loading": {
+                              "type": "SkeletonParagraph",
+                              "properties": {
+                                "lines": 1
+                              }
+                            },
+                            "moduleFederation": {
+                              "module": "Title",
+                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                              "version": "3.23.3",
+                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "content": {
+                      "gutter": 16,
+                      "blocks": [
+                        {
+                          "id": "block:candidates_home:candidate_name",
+                          "type": "TextInput",
+                          "required": "Please enter your name",
+                          "layout": {
+                            "span": 12
+                          },
+                          "properties": {
+                            "title": "Name",
+                            "placeholder": "Enter your name"
+                          },
+                          "blockId": "candidate_name",
+                          "meta": {
+                            "category": "input",
+                            "loading": {
+                              "type": "SkeletonInput"
+                            },
+                            "moduleFederation": {
+                              "module": "TextInput",
+                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                              "version": "3.23.3",
+                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                            },
+                            "valueType": "string"
+                          }
+                        },
+                        {
+                          "id": "block:candidates_home:candidate_dob",
+                          "type": "DateSelector",
+                          "required": "Please enter your Date of Birth",
+                          "layout": {
+                            "span": 12
+                          },
+                          "properties": {
+                            "title": "Date Of Birth",
+                            "placeholder": "Enter your DOB"
+                          },
+                          "blockId": "candidate_dob",
+                          "meta": {
+                            "category": "input",
+                            "loading": {
+                              "type": "SkeletonInput"
+                            },
+                            "moduleFederation": {
+                              "module": "DateSelector",
+                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                              "version": "3.23.3",
+                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                            },
+                            "valueType": "date"
+                          }
+                        },
+                        {
+                          "id": "block:candidates_home:candidate_gender",
+                          "type": "RadioSelector",
+                          "required": "Please enter your gender",
+                          "layout": {
+                            "span": 12
+                          },
+                          "properties": {
+                            "title": "Gender",
+                            "options": [
+                              {
+                                "label": "Male",
+                                "value": "male",
+                                "disabled": false,
+                                "style": null
+                              },
+                              {
+                                "label": "Female",
+                                "value": "female",
+                                "disabled": false,
+                                "style": null
+                              }
+                            ]
+                          },
+                          "blockId": "candidate_gender",
+                          "meta": {
+                            "category": "input",
+                            "loading": {
+                              "type": "SkeletonInput"
+                            },
+                            "moduleFederation": {
+                              "module": "RadioSelector",
+                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                              "version": "3.23.3",
+                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                            },
+                            "valueType": "any"
+                          }
+                        },
+                        {
+                          "id": "block:candidates_home:candidate_position",
+                          "type": "Selector",
+                          "required": "Please enter your position",
+                          "layout": {
+                            "span": 12
+                          },
+                          "properties": {
+                            "title": "Applied Position",
+                            "options": [
+                              {
+                                "label": "Developer",
+                                "value": "Developer",
+                                "disabled": false,
+                                "filterString": null,
+                                "style": null
+                              },
+                              {
+                                "label": "Tester",
+                                "value": "Tester",
+                                "disabled": false,
+                                "filterString": null,
+                                "style": null
+                              }
+                            ],
+                            "showSearch": false
+                          },
+                          "blockId": "candidate_position",
+                          "meta": {
+                            "category": "input",
+                            "loading": {
+                              "type": "SkeletonInput"
+                            },
+                            "moduleFederation": {
+                              "module": "Selector",
+                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                              "version": "3.23.3",
+                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                            },
+                            "valueType": "any"
+                          }
+                        }
+                      ]
+                    },
+                    "extra": {
+                      "blocks": [
+                        {
+                          "id": "block:candidates_home:submit_button",
+                          "type": "Button",
+                          "properties": {
+                            "block": true,
+                            "icon": "SaveOutlined",
+                            "title": "Submit"
+                          },
+                          "events": {
+                            "onClick": {
+                              "try": [
+                                {
+                                  "id": "validate",
+                                  "type": "Validate"
+                                },
+                                {
+                                  "id": "insert_candidates",
+                                  "type": "Request",
+                                  "params": [
+                                    "insert_candidates"
+                                  ]
+                                },
+                                {
+                                  "id": "fetch_candidates",
+                                  "type": "Request",
+                                  "params": [
+                                    "fetch_candidates"
+                                  ]
+                                },
+                                {
+                                  "id": "set_candidates",
+                                  "type": "SetState",
+                                  "params": {
+                                    "candidates_list": {
+                                      "_request": "fetch_candidates"
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "open_notification",
+                                  "type": "CallMethod",
+                                  "params": {
+                                    "blockId": "notification_success",
+                                    "method": "open"
+                                  }
+                                }
+                              ],
+                              "catch": [
+                                {
+                                  "id": "open_notification",
+                                  "type": "CallMethod",
+                                  "params": {
+                                    "blockId": "notification_error",
+                                    "method": "open"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "blockId": "submit_button",
+                          "meta": {
+                            "category": "display",
+                            "loading": {
+                              "type": "SkeletonButton"
+                            },
+                            "moduleFederation": {
+                              "module": "Button",
+                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                              "version": "3.23.3",
+                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                            }
+                          }
+                        },
+                        {
+                          "id": "block:candidates_home:notification_success",
+                          "type": "Notification",
+                          "properties": {
+                            "message": "Action completed successfully"
+                          },
+                          "blockId": "notification_success",
+                          "meta": {
+                            "category": "display",
+                            "loading": false,
+                            "moduleFederation": {
+                              "module": "Notification",
+                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                              "version": "3.23.3",
+                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                            }
+                          }
+                        },
+                        {
+                          "id": "block:candidates_home:notification_error",
+                          "type": "Notification",
+                          "properties": {
+                            "message": "Something went wrong",
+                            "status": "error"
+                          },
+                          "blockId": "notification_error",
+                          "meta": {
+                            "category": "display",
+                            "loading": false,
+                            "moduleFederation": {
+                              "module": "Notification",
+                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                              "version": "3.23.3",
+                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "blockId": "add_candidate_card",
+                  "meta": {
+                    "category": "container",
+                    "loading": {
+                      "type": "Skeleton",
+                      "properties": {
+                        "height": 80
+                      }
+                    },
+                    "moduleFederation": {
+                      "module": "Card",
+                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                      "version": "3.23.3",
+                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                    }
+                  }
+                },
+                {
+                  "id": "block:candidates_home:candidates_list",
+                  "type": "List",
+                  "blockId": "candidates_list",
+                  "meta": {
+                    "category": "list",
+                    "loading": false,
+                    "moduleFederation": {
+                      "module": "List",
+                      "scope": "_at_lowdefy_slash_blocks_dash_basic",
+                      "version": "3.23.3",
+                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-basic/remoteEntry.js"
+                    },
+                    "valueType": "array"
+                  },
+                  "areas": {
+                    "content": {
+                      "blocks": [
+                        {
+                          "id": "block:candidates_home:candidates_list_card",
+                          "type": "Card",
+                          "style": {
+                            "marginTop": 16
+                          },
+                          "areas": {
+                            "title": {
+                              "blocks": [
+                                {
+                                  "id": "block:candidates_home:candidates_list_title",
+                                  "type": "Title",
+                                  "properties": {
+                                    "content": {
+                                      "_state": "candidates_list.$.name"
+                                    },
+                                    "level": 4
+                                  },
+                                  "blockId": "candidates_list_title",
+                                  "meta": {
+                                    "category": "display",
+                                    "loading": {
+                                      "type": "SkeletonParagraph",
+                                      "properties": {
+                                        "lines": 1
+                                      }
+                                    },
+                                    "moduleFederation": {
+                                      "module": "Title",
+                                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                      "version": "3.23.3",
+                                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "content": {
+                              "blocks": [
+                                {
+                                  "id": "block:candidates_home:candidates_list_description",
+                                  "type": "Descriptions",
+                                  "properties": {
+                                    "items": [
+                                      {
+                                        "label": "Date Of Birth",
+                                        "value": {
+                                          "_nunjucks": {
+                                            "template": "{{ my_date | date(\"YYYY-MM-DD\") }}",
+                                            "on": {
+                                              "my_date": {
+                                                "_state": "candidates_list.$.dateOfBirth"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "label": "Gender",
+                                        "value": {
+                                          "_state": "candidates_list.$.gender"
+                                        }
+                                      },
+                                      {
+                                        "label": "Applied Position",
+                                        "value": {
+                                          "_state": "candidates_list.$.position"
+                                        }
+                                      }
+                                    ],
+                                    "layout": "vertical",
+                                    "size": "small"
+                                  },
+                                  "blockId": "candidates_list_description",
+                                  "meta": {
+                                    "category": "display",
+                                    "loading": {
+                                      "type": "Skeleton",
+                                      "properties": {
+                                        "height": 80
+                                      }
+                                    },
+                                    "moduleFederation": {
+                                      "module": "Descriptions",
+                                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                      "version": "3.23.3",
+                                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "extra": {
+                              "blocks": [
+                                {
+                                  "id": "block:candidates_home:candidates_list",
+                                  "type": "Button",
+                                  "events": {
+                                    "onClick": {
+                                      "try": [
+                                        {
+                                          "id": "set_selected",
+                                          "type": "SetState",
+                                          "params": {
+                                            "selected_id": {
+                                              "_state": "candidates_list.$._id"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "id": "toggleOpen",
+                                          "type": "CallMethod",
+                                          "params": {
+                                            "blockId": "candidate_modal",
+                                            "method": "toggleOpen"
+                                          }
+                                        }
+                                      ],
+                                      "catch": []
+                                    }
+                                  },
+                                  "properties": {
+                                    "block": true,
+                                    "title": "View More"
+                                  },
+                                  "blockId": "candidates_list",
+                                  "meta": {
+                                    "category": "display",
+                                    "loading": {
+                                      "type": "SkeletonButton"
+                                    },
+                                    "moduleFederation": {
+                                      "module": "Button",
+                                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                      "version": "3.23.3",
+                                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "block:candidates_home:candidate_modal",
+                                  "type": "Modal",
+                                  "events": {
+                                    "onOpen": {
+                                      "try": [
+                                        {
+                                          "id": "fetch_selected",
+                                          "type": "Request",
+                                          "params": [
+                                            "fetch_selected"
+                                          ]
+                                        },
+                                        {
+                                          "id": "set_selected",
+                                          "type": "SetState",
+                                          "params": {
+                                            "_request": "fetch_selected.0"
+                                          }
+                                        }
+                                      ],
+                                      "catch": []
+                                    },
+                                    "onClose": {
+                                      "try": [
+                                        {
+                                          "id": "fetch_candidates",
+                                          "type": "Request",
+                                          "params": [
+                                            "fetch_candidates"
+                                          ]
+                                        },
+                                        {
+                                          "id": "set_candidates",
+                                          "type": "SetState",
+                                          "params": {
+                                            "candidates_list": {
+                                              "_request": "fetch_candidates"
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "catch": []
+                                    }
+                                  },
+                                  "areas": {
+                                    "content": {
+                                      "blocks": [
+                                        {
+                                          "id": "block:candidates_home:candidate_modal_card",
+                                          "type": "Card",
+                                          "areas": {
+                                            "title": {
+                                              "blocks": [
+                                                {
+                                                  "id": "block:candidates_home:candidate_modal_title",
+                                                  "type": "Title",
+                                                  "properties": {
+                                                    "content": "Candidate Information",
+                                                    "level": 3
+                                                  },
+                                                  "blockId": "candidate_modal_title",
+                                                  "meta": {
+                                                    "category": "display",
+                                                    "loading": {
+                                                      "type": "SkeletonParagraph",
+                                                      "properties": {
+                                                        "lines": 1
+                                                      }
+                                                    },
+                                                    "moduleFederation": {
+                                                      "module": "Title",
+                                                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                                      "version": "3.23.3",
+                                                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "content": {
+                                              "gutter": 16,
+                                              "blocks": [
+                                                {
+                                                  "id": "block:candidates_home:name",
+                                                  "type": "TextInput",
+                                                  "layout": {
+                                                    "span": 12
+                                                  },
+                                                  "properties": {
+                                                    "title": "Name",
+                                                    "placeholder": "Enter your name"
+                                                  },
+                                                  "blockId": "name",
+                                                  "meta": {
+                                                    "category": "input",
+                                                    "loading": {
+                                                      "type": "SkeletonInput"
+                                                    },
+                                                    "moduleFederation": {
+                                                      "module": "TextInput",
+                                                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                                      "version": "3.23.3",
+                                                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                                    },
+                                                    "valueType": "string"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "block:candidates_home:dateOfBirth",
+                                                  "type": "DateSelector",
+                                                  "layout": {
+                                                    "span": 12
+                                                  },
+                                                  "properties": {
+                                                    "title": "Date Of Birth",
+                                                    "placeholder": "Enter your DOB"
+                                                  },
+                                                  "blockId": "dateOfBirth",
+                                                  "meta": {
+                                                    "category": "input",
+                                                    "loading": {
+                                                      "type": "SkeletonInput"
+                                                    },
+                                                    "moduleFederation": {
+                                                      "module": "DateSelector",
+                                                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                                      "version": "3.23.3",
+                                                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                                    },
+                                                    "valueType": "date"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "block:candidates_home:gender",
+                                                  "type": "RadioSelector",
+                                                  "layout": {
+                                                    "span": 12
+                                                  },
+                                                  "properties": {
+                                                    "title": "Gender",
+                                                    "options": [
+                                                      {
+                                                        "label": "Male",
+                                                        "value": "male",
+                                                        "disabled": false,
+                                                        "style": null
+                                                      },
+                                                      {
+                                                        "label": "Female",
+                                                        "value": "female",
+                                                        "disabled": false,
+                                                        "style": null
+                                                      }
+                                                    ]
+                                                  },
+                                                  "blockId": "gender",
+                                                  "meta": {
+                                                    "category": "input",
+                                                    "loading": {
+                                                      "type": "SkeletonInput"
+                                                    },
+                                                    "moduleFederation": {
+                                                      "module": "RadioSelector",
+                                                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                                      "version": "3.23.3",
+                                                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                                    },
+                                                    "valueType": "any"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "block:candidates_home:position",
+                                                  "type": "Selector",
+                                                  "layout": {
+                                                    "span": 12
+                                                  },
+                                                  "properties": {
+                                                    "title": "Applied Position",
+                                                    "options": [
+                                                      {
+                                                        "label": "Developer",
+                                                        "value": "Developer",
+                                                        "disabled": false,
+                                                        "filterString": null,
+                                                        "style": null
+                                                      },
+                                                      {
+                                                        "label": "Tester",
+                                                        "value": "Tester",
+                                                        "disabled": false,
+                                                        "filterString": null,
+                                                        "style": null
+                                                      }
+                                                    ],
+                                                    "showSearch": false
+                                                  },
+                                                  "blockId": "position",
+                                                  "meta": {
+                                                    "category": "input",
+                                                    "loading": {
+                                                      "type": "SkeletonInput"
+                                                    },
+                                                    "moduleFederation": {
+                                                      "module": "Selector",
+                                                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                                      "version": "3.23.3",
+                                                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                                    },
+                                                    "valueType": "any"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "blockId": "candidate_modal_card",
+                                          "meta": {
+                                            "category": "container",
+                                            "loading": {
+                                              "type": "Skeleton",
+                                              "properties": {
+                                                "height": 80
+                                              }
+                                            },
+                                            "moduleFederation": {
+                                              "module": "Card",
+                                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                              "version": "3.23.3",
+                                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "footer": {
+                                      "gutter": 16,
+                                      "blocks": [
+                                        {
+                                          "id": "block:candidates_home:candidate_delete_button",
+                                          "type": "Button",
+                                          "events": {
+                                            "onClick": {
+                                              "try": [
+                                                {
+                                                  "id": "delete_confirm",
+                                                  "type": "CallMethod",
+                                                  "params": {
+                                                    "blockId": "delete_confirm_modal",
+                                                    "method": "open"
+                                                  }
+                                                }
+                                              ],
+                                              "catch": []
+                                            }
+                                          },
+                                          "properties": {
+                                            "title": "Delete",
+                                            "type": "danger"
+                                          },
+                                          "style": {
+                                            "display": "inline-block"
+                                          },
+                                          "blockId": "candidate_delete_button",
+                                          "meta": {
+                                            "category": "display",
+                                            "loading": {
+                                              "type": "SkeletonButton"
+                                            },
+                                            "moduleFederation": {
+                                              "module": "Button",
+                                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                              "version": "3.23.3",
+                                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "id": "block:candidates_home:candidate_update_button",
+                                          "type": "Button",
+                                          "events": {
+                                            "onClick": {
+                                              "try": [
+                                                {
+                                                  "id": "update_candidate",
+                                                  "type": "Request",
+                                                  "params": [
+                                                    "update_candidate"
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "fetch_selected",
+                                                  "type": "Request",
+                                                  "params": [
+                                                    "fetch_selected"
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "set_selected",
+                                                  "type": "SetState",
+                                                  "params": {
+                                                    "_request": "fetch_selected.0"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "open_notification",
+                                                  "type": "CallMethod",
+                                                  "params": {
+                                                    "blockId": "notification_success",
+                                                    "method": "open"
+                                                  }
+                                                }
+                                              ],
+                                              "catch": [
+                                                {
+                                                  "id": "open_notification",
+                                                  "type": "CallMethod",
+                                                  "params": {
+                                                    "blockId": "notification_error",
+                                                    "method": "open"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "properties": {
+                                            "title": "Update",
+                                            "type": "primary"
+                                          },
+                                          "style": {
+                                            "display": "inline-block"
+                                          },
+                                          "blockId": "candidate_update_button",
+                                          "meta": {
+                                            "category": "display",
+                                            "loading": {
+                                              "type": "SkeletonButton"
+                                            },
+                                            "moduleFederation": {
+                                              "module": "Button",
+                                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                              "version": "3.23.3",
+                                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "id": "block:candidates_home:delete_confirm_modal",
+                                          "type": "ConfirmModal",
+                                          "events": {
+                                            "onOk": {
+                                              "try": [
+                                                {
+                                                  "id": "link_to_candidates_home",
+                                                  "type": "Link",
+                                                  "params": {
+                                                    "pageId": "candidates_home"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "delete_candidate",
+                                                  "type": "Request",
+                                                  "params": [
+                                                    "delete_candidate"
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "fetch_selected",
+                                                  "type": "Request",
+                                                  "params": [
+                                                    "fetch_selected"
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "open_notification",
+                                                  "type": "CallMethod",
+                                                  "params": {
+                                                    "blockId": "notification_success",
+                                                    "method": "open"
+                                                  }
+                                                }
+                                              ],
+                                              "catch": [
+                                                {
+                                                  "id": "open_notification",
+                                                  "type": "CallMethod",
+                                                  "params": {
+                                                    "blockId": "notification_error",
+                                                    "method": "open"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "areas": {
+                                            "content": {
+                                              "blocks": [
+                                                {
+                                                  "id": "block:candidates_home:delete_confirm_modal_title",
+                                                  "type": "Title",
+                                                  "properties": {
+                                                    "content": "Delete Candidate",
+                                                    "level": 3
+                                                  },
+                                                  "blockId": "delete_confirm_modal_title",
+                                                  "meta": {
+                                                    "category": "display",
+                                                    "loading": {
+                                                      "type": "SkeletonParagraph",
+                                                      "properties": {
+                                                        "lines": 1
+                                                      }
+                                                    },
+                                                    "moduleFederation": {
+                                                      "module": "Title",
+                                                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                                      "version": "3.23.3",
+                                                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "id": "block:candidates_home:delete_confirm_modal_content",
+                                                  "type": "Paragraph",
+                                                  "properties": {
+                                                    "content": "Are you sure you want to delete this candidate?"
+                                                  },
+                                                  "blockId": "delete_confirm_modal_content",
+                                                  "meta": {
+                                                    "category": "display",
+                                                    "loading": {
+                                                      "type": "SkeletonParagraph"
+                                                    },
+                                                    "moduleFederation": {
+                                                      "module": "Paragraph",
+                                                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                                      "version": "3.23.3",
+                                                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "properties": {
+                                            "okText": "Delete",
+                                            "okButton": {
+                                              "type": "danger"
+                                            }
+                                          },
+                                          "blockId": "delete_confirm_modal",
+                                          "meta": {
+                                            "category": "container",
+                                            "loading": false,
+                                            "moduleFederation": {
+                                              "module": "ConfirmModal",
+                                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                              "version": "3.23.3",
+                                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "style": {
+                                        "display": "inline-block"
+                                      }
+                                    }
+                                  },
+                                  "blockId": "candidate_modal",
+                                  "meta": {
+                                    "category": "container",
+                                    "loading": false,
+                                    "moduleFederation": {
+                                      "module": "Modal",
+                                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                                      "version": "3.23.3",
+                                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "blockId": "candidates_list_card",
+                          "meta": {
+                            "category": "container",
+                            "loading": {
+                              "type": "Skeleton",
+                              "properties": {
+                                "height": 80
+                              }
+                            },
+                            "moduleFederation": {
+                              "module": "Card",
+                              "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                              "version": "3.23.3",
+                              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "footer": {
+      "blocks": [
+        {
+          "id": "block:candidates_home:footer_box",
+          "type": "Box",
+          "blockId": "footer_box",
+          "meta": {
+            "category": "container",
+            "loading": false,
+            "moduleFederation": {
+              "module": "Box",
+              "scope": "_at_lowdefy_slash_blocks_dash_basic",
+              "version": "3.23.3",
+              "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-basic/remoteEntry.js"
+            }
+          },
+          "areas": {
+            "content": {
+              "blocks": [
+                {
+                  "id": "block:candidates_home:footer_text",
+                  "type": "Paragraph",
+                  "properties": {
+                    "content": "Made by BUD!"
+                  },
+                  "blockId": "footer_text",
+                  "meta": {
+                    "category": "display",
+                    "loading": {
+                      "type": "SkeletonParagraph"
+                    },
+                    "moduleFederation": {
+                      "module": "Paragraph",
+                      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+                      "version": "3.23.3",
+                      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "auth": {
+    "public": true
+  },
+  "pageId": "candidates_home",
+  "blockId": "candidates_home",
+  "meta": {
+    "category": "context",
+    "loading": {
+      "type": "Spinner",
+      "properties": {
+        "height": "100vh"
+      }
+    },
+    "moduleFederation": {
+      "module": "PageHCF",
+      "scope": "_at_lowdefy_slash_blocks_dash_antd",
+      "version": "3.23.3",
+      "remoteEntryUrl": "https://blocks-cdn.lowdefy.com/v3.23.3/blocks-antd/remoteEntry.js"
+    }
+  },
+  "requests": [
+    {
+      "id": "request:candidates_home:candidates_home:insert_candidates",
+      "type": "MongoDBInsertOne",
+      "connectionId": "candidates",
+      "auth": {
+        "public": true
+      },
+      "requestId": "insert_candidates",
+      "contextId": "candidates_home"
+    },
+    {
+      "id": "request:candidates_home:candidates_home:fetch_candidates",
+      "type": "MongoDBFind",
+      "connectionId": "candidates",
+      "auth": {
+        "public": true
+      },
+      "requestId": "fetch_candidates",
+      "contextId": "candidates_home"
+    },
+    {
+      "id": "request:candidates_home:candidates_home:fetch_selected",
+      "type": "MongoDBAggregation",
+      "connectionId": "candidates",
+      "auth": {
+        "public": true
+      },
+      "requestId": "fetch_selected",
+      "contextId": "candidates_home"
+    },
+    {
+      "id": "request:candidates_home:candidates_home:update_candidate",
+      "type": "MongoDBUpdateOne",
+      "connectionId": "candidates",
+      "auth": {
+        "public": true
+      },
+      "requestId": "update_candidate",
+      "contextId": "candidates_home"
+    },
+    {
+      "id": "request:candidates_home:candidates_home:delete_candidate",
+      "type": "MongoDBDeleteOne",
+      "connectionId": "candidates",
+      "auth": {
+        "public": true
+      },
+      "requestId": "delete_candidate",
+      "contextId": "candidates_home"
+    }
+  ],
+  "operators": [
+    "_request",
+    "_state",
+    "_nunjucks"
+  ]
+}

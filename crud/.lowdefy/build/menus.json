@@ -1,0 +1,17 @@
+[
+  {
+    "id": "menu:default",
+    "links": [
+      {
+        "id": "menuitem:default:candidates_home",
+        "type": "MenuLink",
+        "pageId": "candidates_home",
+        "auth": {
+          "public": true
+        },
+        "menuItemId": "candidates_home"
+      }
+    ],
+    "menuId": "default"
+  }
+]

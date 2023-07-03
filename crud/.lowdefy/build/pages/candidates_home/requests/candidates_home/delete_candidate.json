@@ -1,0 +1,17 @@
+{
+  "id": "request:candidates_home:candidates_home:delete_candidate",
+  "type": "MongoDBDeleteOne",
+  "connectionId": "candidates",
+  "properties": {
+    "filter": {
+      "_id": {
+        "_state": "selected_id"
+      }
+    }
+  },
+  "auth": {
+    "public": true
+  },
+  "requestId": "delete_candidate",
+  "contextId": "candidates_home"
+}

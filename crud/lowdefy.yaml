@@ -1,0 +1,22 @@
+lowdefy: 3.23.3
+name: Lowdefy Candidate CRUD
+licence: UNLICENSED
+
+# mongodb connection
+connections:
+  - id: candidates
+    type: MongoDBCollection
+    properties:
+      databaseUri:
+        _secret: MONGODB_URI
+      databaseName: candidates-crud
+      collection: candidates
+      write: true
+menus:
+  - id: default
+    links:
+      - id: candidates_home
+        type: MenuLink
+        pageId: candidates_home
+pages:
+  - _ref: pages/candidates/candidates_home.yaml

@@ -1,0 +1,9 @@
+# Request to retrieve the selected candidate
+id: fetch_selected
+type: MongoDBAggregation
+connectionId: candidates
+properties:
+  pipeline:
+    - $match:
+        _id:
+          _state: selected_id

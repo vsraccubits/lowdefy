@@ -1,0 +1,8 @@
+# Request to delete a candidate
+id: delete_candidate
+type: MongoDBDeleteOne
+connectionId: candidates
+properties:
+  filter:
+    _id:
+      _state: selected_id

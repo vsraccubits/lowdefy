@@ -1,0 +1,10 @@
+# Request to fetch candidates
+id: fetch_candidates
+type: MongoDBFind
+connectionId: candidates
+properties:
+  query: {}
+  options:
+    sort:
+      - - createdAt
+        - -1

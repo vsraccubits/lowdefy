@@ -1,0 +1,51 @@
+id: candidates_home
+type: PageHCF
+properties:
+  title: Candidates
+  # override the content section of the page
+  content:
+    style:
+      marginTop: 30
+      marginBottom: 30
+  footer:
+    # override the footer section of the page
+    style:
+      textAlign: center
+      backgroundColor: '#d9d9d9'
+      width: 100%
+requests:
+  - _ref: pages/candidates/requests/insert_candidate.yaml
+  - _ref: pages/candidates/requests/fetch_candidates.yaml
+  - _ref: pages/candidates/requests/fetch_selected.yaml
+  - _ref: pages/candidates/requests/update_candidate.yaml
+  - _ref: pages/candidates/requests/delete_candidate.yaml
+events:
+  onMount:
+    - id: fetch_candidates
+      type: Request
+      params:
+        - fetch_candidates
+    - id: set_candidates
+      type: SetState
+      params:
+        candidates_list:
+          _request: fetch_candidates
+areas:
+  header:
+    style:
+      textAlign: center
+    blocks:
+      - _ref: pages/candidates/components/logo.yaml
+  content:
+    justify: center
+    blocks:
+      - id: candidates_block
+        type: Box
+        layout:
+          span: 12
+        blocks:
+          - _ref: pages/candidates/components/add_candidate.yaml
+          - _ref: pages/candidates/components/list_candidates.yaml
+  footer:
+    blocks:
+      - _ref: pages/candidates/components/footer.yaml

@@ -1,0 +1,8 @@
+# common footer component
+id: footer_box
+type: Box
+blocks:
+  - id: footer_text
+    type: Paragraph
+    properties:
+      content: Made by BUD!
